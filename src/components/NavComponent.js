@@ -7,10 +7,9 @@ import { Link, withRouter } from 'react-router-dom';
     const selected = props.location.pathname;
 
         return (
-            <nav className="navbar navbar-expand navbar-light border w-100">
-                <Link className="navbar-brand" to="/">Solstice Assessment</Link>
-                <div id="navbarContent">
-                    <ul className="navbar-nav  mr-auto">
+            <nav className="navbar navbar-expand navbar-light border">
+                <Link className="navbar-brand d-none d-sm-flex" to="/">Solstice Assessment</Link>
+                    <ul className="navbar-nav mr-auto">
                         <li className="nav-item">
                             <Link to="/"
                                   className={((selected === "/" || selected.startsWith("/customers")) ? "active nav-link": "nav-link")}>
@@ -24,7 +23,6 @@ import { Link, withRouter } from 'react-router-dom';
                             </Link>
                         </li>
                     </ul>
-                </div>
             </nav>
 
         )
