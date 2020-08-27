@@ -3,7 +3,7 @@ import {findAllCustomersBasicInfo} from "../services/CustomerService"
 import styled from "styled-components";
 
 /**
- * Component holding a table of all customer ids, first names, and last names.
+ * Component holding a table of all customer ids, first names and last names, and emails.
  * Rows are clickable and lead to the individual customer profile.
  */
 class CustomerTableComponent extends React.Component {
