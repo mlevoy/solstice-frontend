@@ -30,7 +30,8 @@ CustomerDetailItemComponent.propType = {
 
 
 const DisabledInput = styled.input`
-     -webkit-text-fill-color: black //Override Safari's lighter font color on disabled inputs
+     -webkit-text-fill-color: #212529; //Override Safari's lighter font color on disabled inputs
+     opacity: 1;
 `;
 
 export default CustomerDetailItemComponent
