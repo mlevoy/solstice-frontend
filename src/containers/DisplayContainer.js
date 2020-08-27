@@ -5,6 +5,9 @@ import CustomerTableComponent from "../components/CustomerTableComponent";
 import CustomerDetailsContainer from "./CustomerDetailsContainer"
 import NavComponent from "../components/NavComponent"
 
+/**
+ * Top level component - holds nav and all routes
+ */
 const DisplayContainer = () => {
     return (
         <Router>

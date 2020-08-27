@@ -2,6 +2,10 @@ import React from "react";
 import {findAllCustomersBasicInfo} from "../services/CustomerService"
 import styled from "styled-components";
 
+/**
+ * Component holding a table of all customer ids, first names, and last names.
+ * Rows are clickable and lead to the individual customer profile.
+ */
 class CustomerTableComponent extends React.Component {
     constructor (props) {
         super(props);
@@ -54,6 +58,7 @@ class CustomerTableComponent extends React.Component {
         )
     }
 }
+
 const ClickableTableItem = styled.tr`
     cursor: pointer;
 `;

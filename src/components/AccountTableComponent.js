@@ -2,14 +2,16 @@ import React from "react";
 import {findAllAccounts, findAccountsForCustomer} from "../services/AccountService"
 import PropTypes from 'prop-types';
 
-
+/**
+ * A table component listing account data for all accounts fetched - either total or per customer.
+ */
 class AccountTableComponent extends React.Component {
     static propTypes = {
         onCustomerDetails: PropTypes.bool,
         customerId: PropTypes.string,
     };
 
-    constructor (props) {
+    constructor(props) {
         super(props);
         this.state = {
             accounts: undefined
@@ -17,21 +19,20 @@ class AccountTableComponent extends React.Component {
     }
 
     componentDidMount() {
-        if(this.props.onCustomerDetails){
+        if (this.props.onCustomerDetails) {
             findAccountsForCustomer(this.props.customerId).then(accounts => this.setState({accounts: accounts}))
-        }
-        else{
+        } else {
             findAllAccounts().then(accounts => this.setState({accounts: accounts}))
         }
     }
 
     render() {
-        const { accounts } = this.state;
+        const {accounts} = this.state;
         return (
             <div>
                 <h3>Accounts</h3>
                 <br/>
-                {!!(accounts && accounts.length)? <table className="table">
+                {!!(accounts && accounts.length) ? <table className="table">
                     <thead>
                     <tr>
                         <th>Id</th>
@@ -57,14 +58,16 @@ class AccountTableComponent extends React.Component {
                             <td>{account.solar_farm_id}</td>
                             <td>{account.capacity_share}</td>
                             <td>{account.created_date}</td>
-                        </tr>})
+                        </tr>
+                    })
                     }
                     </tbody>
                     <tfoot>
                     </tfoot>
-                </table>: <div>No Accounts Found</div>}
+                </table> : <div>No Accounts Found</div>}
             </div>
         )
     }
 }
+
 export default AccountTableComponent

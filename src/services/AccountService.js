@@ -1,5 +1,8 @@
 import {ACCOUNT_API, CUSTOMER_API} from "../common/constants";
 
+/**
+ *Service for all accounts related requests
+ */
 export const findAllAccounts = () => {
     return fetch(ACCOUNT_API)
         .then(response => response.json())
