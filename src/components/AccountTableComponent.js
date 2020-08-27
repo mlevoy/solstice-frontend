@@ -28,7 +28,7 @@ class AccountTableComponent extends React.Component {
     render() {
         const { accounts } = this.state;
         return (
-            <div className={"container-fluid"}>
+            <div>
                 <h3>Accounts</h3>
                 <br/>
                 {!!(accounts && accounts.length)? <table className="table">

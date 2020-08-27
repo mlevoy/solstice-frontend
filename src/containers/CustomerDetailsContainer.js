@@ -1,4 +1,6 @@
 import React from "react";
+import {Link} from 'react-router-dom';
+
 import AccountTableComponent from "../components/AccountTableComponent";
 import {findCustomersById} from "../services/CustomerService";
 import PropTypes from "prop-types";
@@ -23,79 +25,109 @@ class CustomerDetailsContainer extends React.Component {
         const {customer} = this.state
         return (
             <div>
+                <div className={'mb-4'}>
+                    <Link className={'text-dark font-weight-light'} to="/">
+                        <u>Back to Customers</u>
+                    </Link>
+                </div>
                 {customer ? <div id="customerDetailsAndAccountsWrapper">
-                    <div id="customerDetailsWrapper" className="container-fluid">
-                        <h3>Customer Details</h3>
+                        <div id="customerDetailsWrapper">
+                            <h3>Customer Details</h3>
+                            <br/>
+                            <form>
+                                <div className="form-group row">
+                                    <label className="col-form-label col-3 col-lg-2 font-weight-bold" htmlFor="customerId">Customer
+                                        Id:</label>
+                                    <div className="col-9">
+                                    <input className="form-control-plaintext "
+                                           id="customerId"
+                                           readOnly={true}
+                                           disabled={true}
+                                           value={customer.id}/>
+                                    </div>
+                                </div>
+                                <div className={"form-group row"}>
+                                    <label className="col-form-label col-lg-2 col-3 font-weight-bold" htmlFor="firstName">First
+                                        Name:</label>
+                                    <div className="col-9">
+                                    <input className="form-control-plaintext"
+                                           id="firstName"
+                                           readOnly={true}
+                                           disabled={true}
+                                           value={customer.first_name}/>
+                                    </div>
+                                </div>
+                                <div className={"form-group row"}>
+                                    <label className="col-form-label col-3 col-lg-2 font-weight-bold" htmlFor="lastName">Last
+                                        Name:</label>
+                                    <div className="col-9">
+                                    <input className="form-control-plaintext"
+                                           id="lastName"
+                                           readOnly={true}
+                                           disabled={true}
+                                           value={customer.last_name}/>
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label className="col-form-label col-3 col-lg-2 font-weight-bold" htmlFor="email">Email:</label>
+                                    <div className="col-9">
+                                    <input
+                                        className="form-control-plaintext"
+                                        id="email"
+                                        readOnly={true}
+                                        disabled={true}
+                                        value={customer.email}/>
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label className="col-form-label col-lg-2 col-3 font-weight-bold"
+                                           htmlFor="active">Active:</label>
+                                    <div className="col-9">
+                                    <input
+                                        className="form-control-plaintext"
+                                        id="active"
+                                        readOnly={true}
+                                        disabled={true}
+                                        value={customer.active ? "True" : "False"}/>
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label className="col-3 col-lg-2 col-form-label font-weight-bold" htmlFor="accountManagerId">Account
+                                        Manager Id:</label>
+                                    <div className="col-9">
+                                    <input className="form-control-plaintext"
+                                           id="accountManagerId"
+                                           readOnly={true}
+                                           disabled={true}
+                                           value={customer.account_manager_id}/>
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label className="col-3 col-lg-2 col-form-label font-weight-bold" htmlFor="reasonForJoining">Reason
+                                        for Joining:</label>
+                                    <div className="col-9">
+                                    <p className="form-control-plaintext" id="reasonForJoining">
+                                        {customer.reason_for_joining ? customer.reason_for_joining.trim() : ''}
+                                    </p>
+                                    </div>
+                                </div>
+                                <div className="form-group row">
+                                    <label className="col-3 col-form-label col-lg-2 font-weight-bold" htmlFor="createdDate">Date
+                                        Created:</label>
+                                    <div className="col-9">
+                                    <input className="form-control-plaintext"
+                                           id="createdDate"
+                                           readOnly={true}
+                                           disabled={true}
+                                           value={customer.created_date}/>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
                         <br/>
-                        <form>
-                            <div className="form-group row">
-                                <label className="col-form-label col-3" htmlFor="customerId">Customer Id:</label>
-                                <input className="form-control-plaintext col-9"
-                                       id="customerId"
-                                       readOnly={true}
-                                       disabled={true}
-                                       value={customer.id}/>
-                            </div>
-                            <div className={"form-group row"}>
-                                <label className="col-form-label col-3" htmlFor="firstName">First Name:</label>
-                                <input className="col-9 form-control-plaintext"
-                                       id="firstName"
-                                       readOnly={true}
-                                       disabled={true}
-                                       value={customer.first_name}/>
-                            </div>
-                            <div className={"form-group row"}>
-                                <label className="col-form-label col-3" htmlFor="lastName">Last Name:</label>
-                                <input className="form-control-plaintext col-9"
-                                       id="lastName"
-                                       readOnly={true}
-                                       disabled={true}
-                                       value={customer.last_name}/>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col-form-label col-3" htmlFor="email">Email:</label>
-                                <input
-                                    className="form-control-plaintext col-9"
-                                    id="email"
-                                    readOnly={true}
-                                    disabled={true}
-                                    value={customer.email}/>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col-form-label col-3" htmlFor="active">Active:</label>
-                                <input
-                                    className="form-control-plaintext col-9"
-                                    id="active"
-                                    readOnly={true}
-                                    disabled={true}
-                                    value={customer.active ? "True" : "False"}/>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col col-form-label" htmlFor="accountManagerId">Account Manager Id:</label>
-                                <input className="form-control-plaintext col-9"
-                                       id="accountManagerId"
-                                       readOnly={true}
-                                       disabled={true}
-                                       value={customer.account_manager_id}/>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col col-form-label" htmlFor="reasonForJoining">Reason for Joining:</label>
-                                <p className="form-control-plaintext col-9" id="reasonForJoining">
-                                          {customer.reason_for_joining? customer.reason_for_joining.trim() : ''}
-                                </p>
-                            </div>
-                            <div className="form-group row">
-                                <label className="col col-form-label" htmlFor="createdDate">Date Created:</label>
-                                <input className="form-control-plaintext col-9"
-                                       id="createdDate"
-                                       readOnly={true}
-                                       disabled={true}
-                                       value={customer.created_date}/>
-                            </div>
-                        </form>
-                    </div>
-                        <br/>
-                        <AccountTableComponent onCustomerDetails={true} customerId={this.props.customerId}/>
+                        <div className="mb-4">
+                            <AccountTableComponent onCustomerDetails={true} customerId={this.props.customerId}/>
+                        </div>
                     </div>
                     : <div>Unable to locate Customer Information</div>}
             </div>

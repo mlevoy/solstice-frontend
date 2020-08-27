@@ -1,24 +1,25 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
 
-class NavComponent extends React.Component {
+ const NavComponent = (props) => {
 
-    render() {
-        const {selected, selectTab} = this.props;
+    const selected = props.location.pathname;
+
         return (
-            <nav className="container-fluid navbar navbar-expand navbar-light d-flex justify-content-start border col-12">
-                <Link className="navbar-brand" to="/" onClick={() => selectTab("/")}>Solstice Assessment</Link>
+            <nav className="navbar navbar-expand navbar-light border w-100">
+                <Link className="navbar-brand" to="/">Solstice Assessment</Link>
                 <div id="navbarContent">
                     <ul className="navbar-nav  mr-auto">
-                        <li className="nav-item" onClick={() => selectTab("/")}>
-                            <Link to="/" className={(selected === "/" ? "active nav-link": "nav-link")}>
+                        <li className="nav-item">
+                            <Link to="/"
+                                  className={((selected === "/" || selected.startsWith("/customers")) ? "active nav-link": "nav-link")}>
                                 Customers
                             </Link>
                         </li>
-                        <li className="nav-item" onClick={() => selectTab("/accounts")}>
+                        <li className="nav-item">
                             <Link to="/accounts"
-                                  className={(selected === "/accounts" ? "active nav-link": "nav-link")}>
+                                  className={(selected === ('/accounts')? "active nav-link": "nav-link")}>
                                 Accounts
                             </Link>
                         </li>
@@ -27,7 +28,6 @@ class NavComponent extends React.Component {
             </nav>
 
         )
-    }
-}
+};
 
-export default NavComponent;
+export default withRouter(NavComponent);

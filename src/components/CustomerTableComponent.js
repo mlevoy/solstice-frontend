@@ -16,13 +16,13 @@ class CustomerTableComponent extends React.Component {
 
 
     handleClick = (id) => {
-        this.props.history.push(`/c${id}`)
+        this.props.history.push(`/customers/${id}`)
     };
 
     render() {
        const { customers } = this.state;
         return (
-            <div className="container-fluid">
+            <div>
                 <h3>Customers</h3>
                 <br/>
                 <table className="table">
